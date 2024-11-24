@@ -1,0 +1,39 @@
+{
+  "dependencies": {
+    "bcrypt": "5.1.1",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.2",
+    "color": "^4.2.3",
+    "colors": "^1.4.0",
+    "cookie-parser": "^1.4.6",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.0.1",
+    "multer": "^1.4.5-lts.1",
+    "params": "^0.1.1",
+    "react-router-dom": "^6.21.0",
+    "react-scripts": "^5.0.1",
+    "sass": "^1.69.5"
+  },
+  "name": "ec-project-main",
+  "description": "eComerce Project",
+  "type": "module",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "server": "nodemon backend/server.js",
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "data:import": "node backend/seeder.js",
+    "data:destroy": "node backend/seeder.js -d",
+    "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend"
+  },
+  "author": "luan",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "dotenv": "^16.3.1",
+    "nodemon": "^3.0.1"
+  }
+}

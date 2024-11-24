@@ -9,6 +9,8 @@ import productRoutes from './routes/productRoutes.js';
 import userRoutes from './routes/userRoutes.js';
 import orderRoutes from './routes/orderRoutes.js';
 import uploadRoutes from './routes/uploadRoutes.js';
+import cors from 'cors';
+
 const port = process.env.PORT || 4000;
 
 connectDB();
@@ -18,6 +20,7 @@ const app = express()
 //Body parser middleware
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
+app.use(cors());
 
 // Cookie parser middleware
 app.use(cookieParser());

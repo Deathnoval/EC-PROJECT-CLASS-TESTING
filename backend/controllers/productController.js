@@ -168,6 +168,7 @@ const getTopProducts = asyncHandler(async (req, res) => {
 // @access   Public
 const getProducts1 = asyncHandler (async (req, res)=> {
   const products = await Product.find({});
+  console.log(products)
   res.json(products);
 });
 

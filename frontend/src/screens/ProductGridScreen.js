@@ -3,45 +3,45 @@ import { FaStar, FaRegStar } from "react-icons/fa";
 import Product from "../componets/Product";
 import Loader from "../componets/Loader";
 import Message from "../componets/Message";
-import { useParams,useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import Paginate from "../componets/Paginate";
 import { useGetProductsQuery } from "../slices/productsApiSlice";
 const ProductGridScreen = () => {
-  const {pageNumber,keyword,category} = useParams();
-  const { data: products, isLoading, error } = useGetProductsQuery({keyword,pageNumber,category});
+  const { pageNumber, keyword, category } = useParams();
+  const {
+    data: products,
+    isLoading,
+    error,
+  } = useGetProductsQuery({ keyword, pageNumber, category });
   const navigate = useNavigate();
   const categories = [
-    'Tiểu Thuyết',
-    'Văn Học',
-    'Thiếu Nhi',
-    'Kinh Tế',
-    'Ngôn Tình',
-    'Tâm Lí',
+    "Tiểu Thuyết",
+    "Văn Học",
+    "Thiếu Nhi",
+    "Kinh Tế",
+    "Ngôn Tình",
+    "Tâm Lí",
     "Manga",
-]
-const setCategorys = (category) => {
-  if (category) {
-    navigate(`/all-product/filter/${category.trim()}`);
-  } else {
-    navigate('/');
-  }
-};
-  
+  ];
+  const setCategorys = (category) => {
+    if (category) {
+      navigate(`/all-product/filter/${category.trim()}`);
+    } else {
+      navigate("/");
+    }
+  };
+
   const pages = useMemo(() => {
     if (!products) return 0;
-    
-    if(products.pages)
-       return products.pages 
 
-  }, [products,]);
+    if (products.pages) return products.pages;
+  }, [products]);
   const page = useMemo(() => {
     if (!products) return 0;
-         
-    if(products.page)
-    return products.page
+
+    if (products.page) return products.page;
   }, [products]);
 
-  
   return (
     <>
       <section className="list-products py-5 ">
@@ -85,17 +85,17 @@ const setCategorys = (category) => {
                     >
                       <div className="accordion-body">
                         <ul className="list-unstyled">
-                        {categories.map(category => (
-                          <li
-                                style={{
-                                cursor: 'pointer',
-                                 listStyleType: 'none'
-                                }}
-                                onClick={() => setCategorys(category)}
-                                >
-                               {category}
+                          {categories.map((category) => (
+                            <li
+                              style={{
+                                cursor: "pointer",
+                                listStyleType: "none",
+                              }}
+                              onClick={() => setCategorys(category)}
+                            >
+                              {category}
                             </li>
-                            ))}
+                          ))}
                         </ul>
                       </div>
                     </div>
@@ -176,7 +176,7 @@ const setCategorys = (category) => {
                               className="form-check-label"
                               for="flexRadioDefault4"
                             >
-                             Trẻ
+                              Trẻ
                             </label>
                           </div>
 
@@ -302,7 +302,7 @@ const setCategorys = (category) => {
                               className="form-check-label"
                               for="flexRadioDefaultform1"
                             >
-                              Bìa Cứng 
+                              Bìa Cứng
                             </label>
                           </div>
 
@@ -570,15 +570,20 @@ const setCategorys = (category) => {
               ) : (
                 <>
                   <div className="product-card row row-cols-4">
-                    {products.products && products.products.map((product) => (
-                      <Product product={product} />
-                    ))}
+                    {products.products &&
+                      products.products.map((product) => (
+                        <Product product={product} />
+                      ))}
                   </div>
                 </>
               )}
               <div className="d-flex justify-content-center mt-3">
-            <Paginate pages={pages} page={page} keyword={keyword ? keyword : '' }/>
-            </div>
+                <Paginate
+                  pages={pages}
+                  page={page}
+                  keyword={keyword ? keyword : ""}
+                />
+              </div>
             </div>
           </div>
         </div>
